@@ -14,17 +14,21 @@ class Movie{
     }
     public function getMovie() {
         echo "Titolo: {$this->title} <br>";    
-        echo "Genere: {$this->genere}<br>";
+        if (is_array($this->genere)) {
+            echo "Genere: " . implode(', ', $this->genere) . "<br>";
+        } else {
+            echo "Genere: {$this->genere}<br>";
+        }
         echo "Anno: {$this->year}<br>";
     }
 
 }
 
-$Movie1= new Movie("boh, non lo so ","boh",2020);
+$Movie1= new Movie("boh, non lo so ","Drammatico",2020);
 
 $Movie1->getMovie();
 echo "<br>--------------------------------------------<br>";
-$Movie2= new Movie("Il dramma","Fantasy",1998);
+$Movie2 = new Movie("Il dramma", ["Fantasy", "Azione", "Avventuira"], 1998);
 
 $Movie2->getMovie();
 ?>
